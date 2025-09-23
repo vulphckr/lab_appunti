@@ -1,0 +1,12 @@
+Output build:
+[build method:] I can access the field a (1), the field b (2) the input parameter a (1) and the input parameter b (2).
+
+// QUI HO IMPOSTATO this.a e this.b per l'oggetto in questione!! Dopo non verranno resettati.
+
+Output dummyMethod:
+[dummyMethod:] I can access the field a (1), the field b (2),  and the input parameter c (3).
+
+Output dummyMethod2:
+[dummyMethod2:] I can access the field a (1),  the field b (2),  the input parameter a (4), and the local variable b (0). I have no access to c, dummyMethod's input parameter.
+
+quando si usa this ci si riferisce ai campi degli oggetti di quella classe!!!
