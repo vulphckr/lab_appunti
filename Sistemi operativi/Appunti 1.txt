@@ -1,0 +1,81 @@
+Come utilizzare le VM dell'Ateneo (oggi usiamo gitbash):
+
+Ci sono due tipi di VM:
+1) La prima ha l'immagine sui PC fisici dell'istituto;
+2) La seconda ha l'immagine su un server remoto.
+
+SO -> Hypervisor (VMWare) -> SO "Host"
+La macchina virtuale possiede un disco virtuale con ciò che contiene
+l'OS emulato. Ogni SO virtuale ha una descrizione di come è formato
+(virtualmente) e ha uno o più file che ne compongono il disco virtuale.
+
+Nel caso 1) quando dei file nella VM vengono modificati essi vengono anche
+salvati nella macchina fisica; ciò significa che la macchina manterrà le
+modifiche - cambiare macchina fisica su cui viene avviata la VM non manterrà
+le modifiche, in quanto le modifiche non sono salvate su tale macchina.
+
+Le VM hanno un solo user "Studente" con password "studente". Ciò significa
+che qualsiasi studente dell'ateneo può vedere i vari file che sono 
+all'interno della VM. Pertanto NON bisogna salvare le password o modificare
+o eliminare directory di sistema.
+
+Le VM hostate su sistemi remoti sono personali e privati; inoltre cambiare
+dispositivo non eliminerà i file che sono stati salvati al suo interno.
+
+Oggi usiamo Git Bash al fine di vedere come funziona la bash:
+
+Ogni qual volta runniamo un programma all'interno della bash esso lavora
+in un ambiente di esecuzione a sè stante. Il programma che viene lanciato
+eredita una copia della bash da cui è stato avviato; tale copia non è però
+completa: non vengono copiate tutte le variabili, ma solo quelle "d'ambiente".
+
+Come si assegnano le variabili in bash:
+
+<nvar>=<args> - nvar ottiene il valore args. l'uguale deve stare ATTACCATO
+a nvar, altrimenti viene restituito "command not found". Se invece args è
+preceduto da uno spazio, la bash proverà ad eseguire args come comando; 
+viene prima eseguita l'assegnazione (nvar diventa " ") e poi eseguito il
+comando args.
+
+Una variabile molto importante è la variabile PATH: essa è formata da 
+tanti percorsi di file system, separati da due punti (:).
+
+Ad esempio: /bin:/sbin:/usr/bin:/usr/local/sbin si riferisce alle directory
+/bin, /sbin, /usr/bin, e /usr/local/sbin.
+Per visualizzare la variabile, bisogna runnare echo $PATH.
+
+Quando viene lanciato un programma senza specificare un percorso specifico,
+la bash cerca tale programma in alcune directory; tali directory sono appunto
+specificati all'interno della variabile PATH. Nel caso ci fossero due file
+chiamati uguale in due directory specificate in PATH, viene eseguito quello
+che si trova nella directory che sta per prima nella PATH (nel caso precedente)
+se abbiamo gcc in /bin e in /sbin verrà eseguito prima quello in /bin).
+Se un programma viene eseguito senza specificare nella directory e non si
+trova all'interno della PATH, non verrà eseguito in tale modo: esso va quindi
+eseguito tramite specifica della directory in cui si trova.
+
+Per sapere dove si trova un programma nel file system, esiste il comando
+which <cmd>, dove cmd è il programma che si sta cercando. which cerca gli
+SOLO eseguibili presenti all'interno della PATH.
+
+Modificare la PATH comporta che i programmi di uso comune possono non essere
+eseguibili direttamente come comando: ciò rende il tutto molto più difficile
+da usare, quindi va modificata con prudenza.
+
+Usare il comando bash all'interno di una bash creerà un'altra bash figlia
+della bash su cui il comando è stato eseguito. La shell figlia possiede una
+copia (non completa) della madre. Modificare qualcosa all'interno di una bash
+figlia non comporterà modifiche all'interno della bash padre, che può essere
+ripristinata tramite il comando exit, che chiude la bash in utilizzo.
+
+Il comando ps mostra i processi di sistema. La colonna PID riporta
+l'identificatore del processo (Process IDentifier), mentre la colonna
+COMMAND ci dice il programma che sfrutta il processo.
+
+La CLI può eseguire 3 tipologie di comandi:
+
+1 - Comandi built-in: sono i comandi il cui interprete è la shell stessa
+2 - File binari eseguibili: sono i file che contengono codice macchina e si
+	trovano all'interno del file system.
+3 - Script: file di testo che contengono una lista di comandi e vengono
+	spesso creato dagli utenti.
