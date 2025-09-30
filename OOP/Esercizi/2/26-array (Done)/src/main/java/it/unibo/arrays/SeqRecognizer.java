@@ -16,21 +16,59 @@ class SeqRecognizer {
      * Recognizes: 1{2}3.
      */
     static boolean checkSeq2(final int[] array) {
-        return false;
+        int i = 0;
+        boolean onePass = false;
+        boolean threePass = false;
+        for (; i < array.length && array[i] == 1; i++){
+            if(i == 0){
+                onePass = true;
+            } else {
+                onePass = false;
+            }
+        }
+        for (; i < array.length && array[i] == 2; i++);
+        for (; i < array.length && array[i] == 3; i++){
+            threePass = true;
+        }
+        return i == array.length && i >= 2 && threePass && onePass;
     }
 
     /*
      * Recognizes: 1{2}3{4}[5].
      */
     static boolean checkSeq3(final int[] array) {
-        return false;
+        int i = 0;
+        boolean onePass = false;
+        boolean threePass = false;
+        for (; i < array.length && array[i] == 1; i++){
+            if(i == 0){
+                onePass = true;
+            } else {
+                onePass = false;
+            }
+        }
+        for (; i < array.length && array[i] == 2; i++);
+        for (; i < array.length && array[i] == 3; i++){
+            threePass = true;
+        }
+        for (; i < array.length && array[i] == 4; i++);
+        for (; i < array.length && array[i] == 5; i++);
+        return i == array.length && onePass && threePass;
+
     }
 
     /*
      * Recognizes: [2|3]{4}5.
      */
     static boolean checkSeq4(final int[] array) {
-        return false;
+        int i = 0;
+        boolean fivePass = false;
+        for (; i < array.length && (array[i] == 2 || array[i] == 3); i++);
+        for (; i < array.length && array[i] == 4; i++);
+        for (; i < array.length && array[i] == 5; i++){
+            fivePass = true;
+        }
+        return i == array.length && fivePass;
     }
 
     /** Testing methods **/

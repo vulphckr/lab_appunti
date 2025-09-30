@@ -18,30 +18,30 @@ class Smartphone {
     boolean has3G;
     boolean hasNFC;
 
-    Smartphone(String brand, String model){
+    Smartphone(String brand, String model, int sdSize, boolean hasNFC, boolean hasGPS, boolean has3g, int nCPU, int ram){
         this.brand = brand;
         this.model = model;
-    }
-    Smartphone(String brand, String model, boolean hasGPS, boolean has3g){
-        this(brand, model);
-        this.has3G = has3g;
+        this.sdSize = sdSize;
+        this.hasNFC = hasNFC;
         this.hasGPS = hasGPS;
-    }
-    Smartphone(String brand, String model, int sdSize){
-        this(brand, model);
-        this.sdSize = sdSize;
-    }
-    Smartphone(String brand, String model, boolean hasNFC){
-        this(brand, model);
-        this.hasNFC = hasNFC;
-    }
-    Smartphone(String brand, String model, int sdSize, boolean hasNFC, boolean hasGPS, boolean has3g, int nCPU, int ram){
-        this(brand, model, hasGPS, has3g);
-        this.sdSize = sdSize;
-        this.hasNFC = hasNFC;
+        this.has3G = has3g;
         this.nCPU = nCPU;
         this.ram = ram;
     }
+
+    Smartphone(String brand, String model){
+        this(brand, model, DEF_SD_SIZE, DEF_HAS_NFC, DEF_HAS_GPS, DEF_HAS_3G, DEF_N_CPU, DEF_RAM_SIZE);
+    }
+    Smartphone(String brand, String model, boolean hasGPS, boolean has3g){
+        this(brand, model, DEF_SD_SIZE, DEF_HAS_NFC, hasGPS, has3g, DEF_N_CPU, DEF_RAM_SIZE);
+    }
+    Smartphone(String brand, String model, int sdSize){
+        this(brand, model, sdSize, DEF_HAS_NFC, DEF_HAS_GPS, DEF_HAS_3G, DEF_N_CPU, DEF_RAM_SIZE);
+    }
+    Smartphone(String brand, String model, boolean hasNFC){
+        this(brand, model, DEF_SD_SIZE, hasNFC, DEF_HAS_GPS, DEF_HAS_3G, DEF_N_CPU, DEF_RAM_SIZE);
+    }
+
     void printStringRep() {
         System.out.println("Smartphone info:");
         System.out.println("n CPU(s): " + this.nCPU);

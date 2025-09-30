@@ -16,11 +16,12 @@ class WorkWithArrays {
 
     static int[] evenElements(final int[] array) {
         int arrSize = array.length;
-        final int[] evenArray = new int[arrSize/2];
+        final int[] evenArray = new int[(arrSize+1)/2];
         int currEvenIndex = 0;
         for( int i = 0 ; i<arrSize ; i++ ){
-            if( i % 2 == 0){
+            if( i % 2 == 0 ){
                 evenArray[currEvenIndex] = array[i];
+                currEvenIndex = currEvenIndex + 1;
             }
         }
         return evenArray;
@@ -28,11 +29,12 @@ class WorkWithArrays {
 
     static int[] oddElements(final int[] array) {
         int arrSize = array.length;
-        final int[] oddArray = new int[arrSize/2];
+        final int[] oddArray = new int[(arrSize)/2];
         int currOddIndex = 0;
         for( int i = 0 ; i<arrSize ; i++ ){
             if( i % 2 != 0){
                 oddArray[currOddIndex] = array[i];
+                currOddIndex = currOddIndex + 1;
             }
         }
         return oddArray;
@@ -50,13 +52,38 @@ class WorkWithArrays {
                 }
             }
             if(currCount > topElemCount){
+                topElemCount = currCount;
                 topElem = elem;
             }
         }
         return topElem;
     }
 
+    static void swap(final int[] array, int i, int j){
+        int tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+
     static int[] sortArray(final int[] array, final boolean isDescending) {
+        boolean swapped = true;
+        int i;
+        while(swapped){
+            swapped = false;
+            for( i = 0; i<array.length-1; i++){
+                if(isDescending){
+                    if(array[i] < array[i+1]){
+                        swap(array, i, i+1);
+                        swapped = true;
+                    }
+                } else {
+                    if(array[i] > array[i+1]){
+                        swap(array, i, i+1);
+                        swapped = true;
+                    }
+                }
+            }
+        }
         return array;
     }
 
@@ -65,7 +92,23 @@ class WorkWithArrays {
     }
 
     static int[] revertUpTo(final int[] array, final int element) {
-        return null;
+        int toSwapIndex = 0;
+        int i = 0;
+        int j = 0;
+        int tmp = 0;
+        for( ; i<array.length; i++ ){ // Ricerca indice sequenziale
+            if (array[i] == element){
+                toSwapIndex = i;
+            }
+        }
+        // Parte di swap vera e propria
+        for( i = toSwapIndex; i > (toSwapIndex / 2); i-- ){
+            tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+            j++;
+        }
+        return array;
     }
 
     static int[] duplicateElements(final int[] array, final int times) {
