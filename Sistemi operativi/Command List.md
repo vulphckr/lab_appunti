@@ -1,0 +1,19 @@
+- `exit`: chiude la shell
+- `pwd`: mostra la directory attuale
+- `cd`: cambia directory con quella specificata
+- `ps`: mostra i processi attivi nel sistema;
+- `whoami`: mostra il nome utente utilizzatore della shell;
+- `ls`: mostra le informazioni relative a un determinato file/directory;
+	- Il parametro `-l` mostra più informazioni sul file e la directory (come i proprietari, i permessi, ecc...)
+	- Il parametro `-h` fornisce informazioni più leggibili sulla dimensione dei file in questione
+	- Il parametro `-a` mostra anche i file nascosti, ossia quelli che iniziano con un punto. 
+	- E' possibile usare due parametri "staccati" l'un l'altro oppure concatenati da un solo meno; `ls -lh` = `ls -l -h`.
+- `nano` è un editor testuale in CLI che permette di scrivere e modificare i files.
+- `cat` scrive sul terminale il contenuto del file che viene passato in input
+- `sudo` richiede i permessi di amministratore sul comando che viene specificato
+	- Non tutti gli utenti possono utilizzare `sudo`, ma solo quelli presenti all'interno del gruppo `sudo`. 
+- `chmod` imposta i permessi di uno specifico file o di una directory specificata. I permessi da attribuire sono da inserire tramite valori numerici. 
+- `export` rende una variabile locale una variabile d'ambiente
+- `env` mostra tutte le variabili d'ambiente; `set` mostra tutte le variabili e le funzioni della shell
+- `echo` stampa a schermo cosa c'è dopo (può essere una stringa o una variabile)
+- `unset` elimina una variabile
