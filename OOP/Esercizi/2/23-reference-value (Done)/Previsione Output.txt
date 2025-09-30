@@ -1,0 +1,3 @@
+I tipi primitivi vengono passati per valore; ciò significa che i metodi ricevono una copia di tale valore che muore localmente se non restituita. 
+
+Gli oggetti, ossia istanze di classe, sono sempre invece passati per riferimento dunque i valori verranno modificati. La differenza tra CallByReference 1 e 2 è che nel primo il valore è final: ciò significa che p non può essere riassegnato: ne consegue che il valore del punto passato viene modificato. Nella seconda invece viene localmente riassegnato a un nuovo oggetto, che vive solamente all'interno del metodo e poi viene automaticamente riassegnato all'oggetto iniziale. 
