@@ -1,4 +1,4 @@
-- `exit`: chiude la shell
+`exit`: chiude la shell
 - `pwd`: mostra la directory attuale
 - `cd`: cambia directory con quella specificata
 - `ps`: mostra i processi attivi nel sistema;
@@ -7,7 +7,9 @@
 	- Il parametro `-l` mostra più informazioni sul file e la directory (come i proprietari, i permessi, ecc...)
 	- Il parametro `-h` fornisce informazioni più leggibili sulla dimensione dei file in questione
 	- Il parametro `-a` mostra anche i file nascosti, ossia quelli che iniziano con un punto. 
+	- Il parametro `-R` sta per "ricorsione", ossia scandisce anche le directory dentro le directory.
 	- E' possibile usare due parametri "staccati" l'un l'altro oppure concatenati da un solo meno; `ls -lh` = `ls -l -h`.
+	- Il parametro `-d` mostra le informazioni sulla directory, ma non il suo contenuto
 - `nano` è un editor testuale in CLI che permette di scrivere e modificare i files.
 - `cat` scrive sul terminale il contenuto del file che viene passato in input
 - `sudo` richiede i permessi di amministratore sul comando che viene specificato
@@ -16,4 +18,11 @@
 - `export` rende una variabile locale una variabile d'ambiente
 - `env` mostra tutte le variabili d'ambiente; `set` mostra tutte le variabili e le funzioni della shell
 - `echo` stampa a schermo cosa c'è dopo (può essere una stringa o una variabile)
+	- Il flag `-n` non fa andare a capo dopo la visualizzazione
 - `unset` elimina una variabile
+- `history` mostra una lista 
+- `set` gestisce la dichiarazione di variabili:
+	-  Senza argomenti mostra a video tutte le variabili e le funzioni dichiarate
+	- Con il flag `-a` ogni variabile dichiarata dall'esecuzione del comando verrà salvata come variabile d'ambiente; con il flag `+a` si ripristina il comportamento normale
+	- Con il flag `-o`, ogni comando eseguito dall'esecuzione del comando non verrà salvato all'interno di `history`; con il flag `+o` si ripristina il comportamento normale.
+	- `set <nomevar>=<value>` imposta una variabile.
